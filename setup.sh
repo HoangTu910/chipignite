@@ -1,11 +1,14 @@
 #!/bin/bash
 
 # Function to install RISC-V toolchain with specified options
+#!/bin/bash
+
+# Function to install RISC-V toolchain with specified options
 install_riscv() {
     echo "Starting RISC-V toolchain installation..."
 
     # Prompt the user to set an installation path
-    read -p "Enter the directory for RISC-V (e.g., /opt/riscv) or leave it empty for default: " install_dir
+    read -p "Enter the installation directory for RISC-V toolchain (e.g., /opt/riscv): " install_dir
     if [ -z "$install_dir" ]; then
         install_dir="/opt/riscv" # Default path if the user leaves it empty
     fi
@@ -22,15 +25,15 @@ install_riscv() {
     # Change to the cloned directory
     cd riscv-gnu-toolchain || exit
 
-    # Configure the build
-    ./configure --prefix=$install_dir --with-arch=rv32gc --with-abi=ilp32d
+    # Use sudo for the installation step
+    sudo ./configure --prefix=$install_dir --with-arch=rv32gc --with-abi=ilp32d
     if [ $? -ne 0 ]; then
         echo "Configuration failed. Please check the error messages."
         return 1
     fi
     
-    # Build the toolchain
-    make linux
+    # Build the toolchain with sudo
+    sudo make linux
     if [ $? -ne 0 ]; then
         echo "Build failed. Please check the error messages."
         return 1
