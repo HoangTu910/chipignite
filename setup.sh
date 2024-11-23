@@ -8,7 +8,7 @@ install_riscv() {
     echo "Starting RISC-V toolchain installation..."
 
     # Prompt the user to set an installation path
-    read -p "Enter the installation directory for RISC-V toolchain (e.g., /opt/riscv): " install_dir
+    read -p "Enter the installation directory for RISC-V toolchain (e.g., /opt/riscv) or leave EMPTY for default option: " install_dir
     if [ -z "$install_dir" ]; then
         install_dir="/opt/riscv" # Default path if the user leaves it empty
     fi
