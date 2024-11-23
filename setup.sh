@@ -3,7 +3,15 @@
 # Function to install RISC-V toolchain with specified options
 install_riscv() {
     echo "Starting RISC-V toolchain installation..."
+
+    # Prompt the user to set an installation path
+    read -p "Enter the directory for RISC-V (e.g., /opt/riscv) or leave it empty for default: " install_dir
+    if [ -z "$install_dir" ]; then
+        install_dir="/opt/riscv" # Default path if the user leaves it empty
+    fi
     
+    echo "Using installation directory: $install_dir"
+
     # Clone the repository
     git clone https://github.com/riscv/riscv-gnu-toolchain
     if [ $? -ne 0 ]; then
@@ -15,8 +23,7 @@ install_riscv() {
     cd riscv-gnu-toolchain || exit
 
     # Configure the build
-    ./configure --prefix=/opt/riscv --with-arch=rv32gc --with-abi=ilp32d
-    ./configure --prefix=/opt/riscv
+    ./configure --prefix=$install_dir --with-arch=rv32gc --with-abi=ilp32d
     if [ $? -ne 0 ]; then
         echo "Configuration failed. Please check the error messages."
         return 1
@@ -30,6 +37,10 @@ install_riscv() {
     fi
 
     echo "Build completed successfully!"
+
+    # Immediately add the installation directory to PATH for the current session
+    export PATH=$PATH:$install_dir/bin
+    echo "RISC-V toolchain installed and PATH updated. You can now use the toolchain."
 }
 
 # Function to install some other package
