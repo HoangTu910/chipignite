@@ -8,7 +8,7 @@ install_dependencies() {
     sudo apt-get update
 
     # Install build-essential, gawk, texinfo, bison, flex, zlib, and GMP/MPFR
-    sudo apt-get install -y build-essential gawk texinfo bison flex zlib1g-dev libgmp-dev libmpfr-dev
+    sudo apt-get install -y build-essential gawk texinfo bison flex zlib1g-dev libgmp-dev libmpfr-dev libexpat1-dev
 
     if [ $? -eq 0 ]; then
         echo "Dependencies installed successfully!"
