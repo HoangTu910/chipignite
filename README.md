@@ -43,6 +43,11 @@ Below you will see the TOOLCHAIN_PREFIX, set the toolchain prefix to:
 ```bash
 TOOLCHAIN_PREFIX=riscv64-unknown-elf
 ```
+### Run the program
+After finished the setup, run the follown the command:
+```bash
+make clean hex
+```
 
 
 
