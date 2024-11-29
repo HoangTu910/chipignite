@@ -32,15 +32,12 @@ https://github.com/efabless/caravel_board.git
 ```
 After cloned you will see the caravel_board folder, go to caravel_board/firmware/chipignite/blink click to Makefile to config some variable. At the top of the file command all the TOOLCHAIN_PATH and add a new toolchain path like this:
 ```bash
-TOOLCHAIN_PATH=/opt/riscv/
+TOOLCHAIN_PATH=/opt/riscv/bin
 ```
 Below you will see the TOOLCHAIN_PREFIX, set the toolchain prefix to:
 ```bash
 TOOLCHAIN_PREFIX=riscv64-unknown-elf
 ```
-Next, you will a line to combine all the PATH name, remove the -gcc so this should be like this:
-```bash
-$(TOOLCHAIN_PATH)$(TOOLCHAIN_PREFIX) -I../ -I../generated/ -O0 -mabi=ilp32 -march=$(ARCH) -D__vexriscv__ -Wl,-Bstatic,-T,../sections.lds,--strip-debug -ffreestanding -nostdlib -o $@ ../crt0_vex.S ../isr.c ../stub.c $<
-```
+
 
 
