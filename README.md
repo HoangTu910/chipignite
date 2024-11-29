@@ -27,7 +27,7 @@ Wait for the setup to finish
 
 ## Configure Makefile to run
 After installed the RISCV GNU Toolchain, clone the project for testing the board:
-```bash
+```
 https://github.com/efabless/caravel_board.git
 ```
 After cloned you will see the caravel_board folder, go to caravel_board/firmware/chipignite/blink click to Makefile to config some variable. At the top of the file command all the TOOLCHAIN_PATH and add a new toolchain path like this:
