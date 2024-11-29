@@ -34,6 +34,11 @@ After cloned you will see the caravel_board folder, go to caravel_board/firmware
 ```bash
 TOOLCHAIN_PATH=/opt/riscv/bin
 ```
+Next, look below you will see ARCH=rv32i, command that line and change arch to rv32i_zicsr:
+```bash
+#ARCH=rv32i
+ARCH=rv32i_zicsr
+```
 Below you will see the TOOLCHAIN_PREFIX, set the toolchain prefix to:
 ```bash
 TOOLCHAIN_PREFIX=riscv64-unknown-elf
